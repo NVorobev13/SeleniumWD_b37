@@ -1,0 +1,108 @@
+﻿  Source.cpp
+C:\Users\Owner\source\repos\Project1\Source.cpp(19,6): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+C:\Users\Owner\source\repos\Project1\Source.cpp(19,6): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Owner\source\repos\Project1\Source.cpp(19,12): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Owner\source\repos\Project1\Source.cpp(20,10): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+C:\Users\Owner\source\repos\Project1\Source.cpp(20,10): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Owner\source\repos\Project1\Source.cpp(20,19): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Owner\source\repos\Project1\Source.cpp(21,14): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Owner\source\repos\Project1\Source.cpp(21,11): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "row"
+C:\Users\Owner\source\repos\Project1\Source.cpp(159,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(160,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(176,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(177,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(178,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(178,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(180,43): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(181,52): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(190,14): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(215,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(216,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(217,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(217,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(219,40): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(220,43): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(221,31): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(221,51): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(222,44): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(223,40): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(238,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(239,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(244,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(245,10): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(245,16): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(247,18): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(248,17): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(258,3): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(268,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(269,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(270,10): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(270,16): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(272,47): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(273,34): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(274,25): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(275,28): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(302,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(303,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(318,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(330,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(331,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(332,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(332,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(334,42): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(335,24): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(336,29): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(337,34): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(338,34): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(339,24): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(340,25): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(368,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(380,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(392,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(417,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(418,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(425,10): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(425,16): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(428,28): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(429,27): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(430,30): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(431,28): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(432,32): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(433,43): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(452,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(453,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(454,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(454,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(461,23): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(485,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(498,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(499,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(500,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(500,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(507,23): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(520,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(534,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(535,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(536,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(536,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(539,24): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(540,35): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(540,53): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(540,71): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(541,25): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(542,31): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(543,32): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(544,26): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(557,2): error C3861: mysql_query: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(558,12): error C3861: mysql_store_result: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(559,7): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(559,13): error C3861: mysql_fetch_row: идентификатор не найден
+C:\Users\Owner\source\repos\Project1\Source.cpp(564,25): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(565,36): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(565,54): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(565,72): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(566,26): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(567,32): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(568,33): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(569,27): error C2065: row: необъявленный идентификатор
+C:\Users\Owner\source\repos\Project1\Source.cpp(569,30): fatal  error C1003: число ошибок превышает 100; остановка компиляции

@@ -1,0 +1,834 @@
+#include<iostream>
+#include<fstream>
+#include<cctype>
+#include<iomanip>
+#include<istream>
+#include<cstdlib>
+
+using namespace std;
+
+#define FNAME_B "Hands_in_Hand.dat"			//имя файла с исходной базой
+#define FNAME_T "searchTown.dat"			//имя файла с результатами сортировки по городам
+#define FNAME_D "Delete.dat"				//имя файла с результатами после удаления
+
+const char PR_R[] = "rb"; //признак открытия бинарного файла на чтение
+const char PR_S[] = "r+b"; //признак открытия файла на чтение и запись
+const char PR_W[] = "wb"; //признак открытия файла на запись
+const char PR_A[] = "ab"; //признак открытия файла на добавление
+
+class account
+{
+	int idDogovora;
+	int birthY;
+	char name[20];
+	char town[20];
+	char telNubmer[12];
+	char placeWork[30];
+	char type;
+	double deposit;
+	double income;
+public:
+	void create_account();	
+	void show_account() const;	
+	//void show_account_town() const;
+	void modify();	
+	void dep(int);	
+	void draw(int);	
+	void report1() const;
+	void report2(const char* fname) const;
+	//void report3() const;
+	void zag1() const;
+	void zag2() const;
+	void zag3() const;
+	int retidDogovora() const;	
+	double retdeposit() const;
+	double retincome() const;
+	char rettype() const;
+};         
+
+void account::create_account()
+{
+	char otv;
+	do {
+		cout << "\n Введите id индивидуального договора (6 цифр, должен совпадать с номером паспорта) : ";
+		cin >> idDogovora;
+		cout << " Введите имя заёмщика: ";
+		cin.ignore();
+		cin.getline(name, 25);
+		cout << " Введите год родения: ";
+		cin >> birthY;
+		cout << " Введите город проживания: ";
+		//cin >> town;
+		cin.ignore();
+		cin.getline(town, 20);
+		cout << " Введите контактный номер телефона (в формате 89**): ";
+		cin >> telNubmer;
+		cout << " Введите место работы (наименование организации): ";
+		cin >> placeWork;
+		cout << " Введите средний ежемесячный доход заёмщика (тыс. руб.): ";
+		cin >> income;
+		cout << " Введите тип учетной записи (B (Bring_out) / I (Insert)): ";
+		cin >> type;
+		type = toupper(type);
+		cout << " Введите сумму, вносимую на Л/С (тыс. руб.): ";
+		cin >> deposit;
+		cout << "\n Учетная запись создана.\n" << endl;
+		//fwrite(&ship, sizeof(ship), 1, baza);
+		cout << "\n Продолжать?[Y/N]";
+
+		while ((otv = getc(stdin)) == '\n');
+	} while (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н');
+
+	cout << "\n Для возврата в главное меню, пожалуйста, нажмите <Enter>.";
+}
+
+void account::show_account() const
+{
+	int i;
+	cout << endl << "\t";
+	for (i = 1; i < 55; i++) {
+		cout << "-";
+	}
+	cout << "\n\t| Id индивидуального договора: " << idDogovora;
+	cout << "\n\t| Имя заёмщика: " << name;
+	cout << "\n\t| Год рождения: " << birthY;
+	cout << "\n\t| Город проживания: " << town;
+	cout << "\n\t| Контактный номер телефона: " << telNubmer;
+	cout << "\n\t| Место работы: " << placeWork;
+	cout << "\n\t| Средний ежемесячный доход: " << income;
+	cout << "\n\t| Тип учетной записи (Bring_out (B)/Insert (I)): " << type;
+	cout << "\n\t| Баланс учетной записи: " << deposit;
+	cout << endl << "\t";
+	for (i = 1; i < 55; i++) {
+		cout << "-";
+	}
+}
+/*
+void account::show_account_town() const {
+	int i;
+	cout << endl << "\t";
+	for (i = 1; i < 55; i++) {
+		cout << "-";
+	}
+	cout << "\n\t| Город проживания: " << town;
+	cout << "\n\t| Id индивидуального договора: " << idDogovora;
+	cout << "\n\t| Имя заёмщика: " << name;
+	cout << "\n\t| Год рождения: " << birthY;
+	cout << "\n\t| Контактный номер телефона: " << telNubmer;
+	cout << "\n\t| Место работы: " << placeWork;
+	cout << "\n\t| Средний ежемесячный доход: " << income;
+	cout << "\n\t| Тип учетной записи (Bring_out (B)/Insert (I)): " << type;
+	cout << "\n\t| Баланс учетной записи: " << deposit;
+	cout << endl << "\t";
+	for (i = 1; i < 55; i++) {
+		cout << "-";
+	}
+}
+*/
+void account::modify()
+{
+	cout << "\n Введите id индивидуального договора (6 цифр, должен совпадать с номером паспорта) :";
+	cin >> idDogovora;
+	cout << "\n Введите актуальное имя заёмщика : ";
+	cin.ignore();
+	cin.getline(name, 25);
+	cout << "\n Введите актуальный год родения : ";
+	cin >> birthY;
+	cout << "\n Введите актуальный город проживания : ";
+	//cin >> town;
+	cin.ignore();
+	cin.getline(town, 20);
+	cout << "\n Введите актуальный контактный номер телефона (в формате 89**) : ";
+	cin.ignore();
+	cin.getline(telNubmer, 11);
+	cout << "\n Введите актуальное место работы (наименование организации): ";
+	cin.ignore();
+	cin.getline(placeWork, 30);
+	cout << "\n Введите средний ежемесячный доход заёмщика (тыс. руб.) : ";
+	cin >> income;
+	cout << "\n Введите тип учетной записи (Bring_out (B)/Insert (I)): ";
+	cin >> type;
+	type = toupper(type);
+	cout << "\n Введите сумму, вносимую на Л/С (тыс. руб.) : ";
+	cin >> deposit;
+}
+
+void account::dep(int x)
+{
+	deposit += x;
+}
+
+void account::draw(int x)
+{
+	deposit -= x;
+}
+
+void account::report1() const
+{
+	cout << endl << "\t|";
+	cout.width(13); cout << idDogovora << "|";
+	cout.width(14); cout << name << "|";
+	cout.width(14); cout << birthY << "|";
+	cout.width(14); cout << town << "|";
+	cout.width(20); cout << telNubmer << "|";
+	cout.width(18); cout << placeWork << "|";
+	cout.width(11); cout << income << "|";
+	cout.width(8); cout << deposit << "|";
+	cout.width(11); cout << type << "|";
+}
+
+void account::report2(const char* fname) const {
+	int i;
+	account ship{};
+	FILE* baza;
+	baza = fopen(fname, PR_R);
+	cout << "\n\n\n\t БАЗА ДАННЫХ МИКРО-ФИНАНСОВОЙ ОРГАНИЗАЦИИ 'Руки в Руки'\n\n";
+	zag2();
+	while (fread(&ship, sizeof(ship), 1, baza) > 0) {
+		cout << endl << "\t|";
+		cout.width(11); cout << ship.income << "|";
+		cout.width(13); cout << ship.idDogovora << "|";
+		cout.width(14); cout << ship.name << "|";
+		cout.width(14); cout << ship.birthY << "|";
+		cout.width(14); cout << ship.town << "|";
+		cout.width(20); cout << ship.telNubmer << "|";
+		cout.width(18); cout << ship.placeWork << "|";
+		cout.width(8); cout << ship.deposit << "|";
+		cout.width(11); cout << ship.type << "|";
+	}
+	cout << endl << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	cout << "\n\n\t СОРТИРОВКА ПО СРЕДНЕМУ ЕЖЕМЕСЯЧНОМУ ДОХОДУ ЗАЁМЩИКА ЗАКОНЧЕНА.";
+	cout << "\n\n\t Для продолжения, пожалуйста, нажмите <Enter>" << endl;
+	fclose(baza);
+	return;
+}
+/*
+void account::report3() const
+{
+	cout << endl << "\t|";
+	cout.width(14); cout << town << "|";
+	cout.width(13); cout << idDogovora << "|";
+	cout.width(14); cout << name << "|";
+	cout.width(14); cout << birthY << "|";
+	cout.width(20); cout << telNubmer << "|";
+	cout.width(18); cout << placeWork << "|";
+	cout.width(11); cout << income << "|";
+	cout.width(8); cout << deposit << "|";
+	cout.width(11); cout << type << "|";
+}
+*/
+void account::zag1() const
+{
+	int i;
+	cout << endl << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	cout << endl;
+	cout << "\t| ID договора |" << " Имя заёмщика |" << " Год рождения |" << "    Город     |" << " Контактный телефон |" << "   Место работы   |" << " Еж. доход |" << " Баланс |" << " Тип счёта |" << endl;
+	cout << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	return;
+}
+
+void account::zag2() const
+{
+	int i;
+	cout << endl << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	cout << endl;
+	cout << "\t| Еж. доход |" << " ID договора |" << " Имя заёмщика |" << " Год рождения |" << "    Город     |" << " Контактный телефон |" << "   Место работы   |" << " Баланс |" << " Тип счёта |" << endl;
+	cout << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	return;
+}
+
+void account::zag3() const
+{
+	int i;
+	cout << endl << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	cout << endl;
+	cout << "\t|    Город     |" << " ID договора |" << " Имя заёмщика |" << " Год рождения |" << " Контактный телефон |" << "   Место работы   |" << " Еж. доход |" << " Баланс |" << " Тип счёта |" << endl;
+	cout << "\t";
+	for (i = 1; i <= 133; i++)
+		cout << "-";
+	return;
+}
+
+int account::retidDogovora() const
+{
+	return idDogovora;
+}
+
+double account::retdeposit() const
+{
+	return deposit;
+}
+
+double account::retincome() const
+{
+	return income;
+}
+
+char account::rettype() const
+{
+	return type;
+}
+
+//***************************************************************
+//			объявление функции
+//****************************************************************
+
+void write_account(const char* fname);									//функция для записи записи в двоичный файл
+void display_sp(const char* fname, int);								//функция для отображения реквизитов учетной записи, предоставленных пользователем
+void modify_account(const char* fname, int);							//функция для изменения записи файла
+void delete_account(const char* fname_b, const char* fname_d, int);		//функция для удаления записи файла
+void display_all(const char* fname);									//функция для отображения всех реквизитов счета
+void deposit_withdraw( const char* fname, int, int);					//функция для внесения/снятия суммы для данного счета
+void operations_rko(const char* fname);									//функция операций РКО
+void settings_bd(const char* fname);									//функция настройки БД			
+void intro();															//функция вводного экрана
+int proverka_file(const char* fname);									// функция проверки наличия физического файла
+void sort_income(const char* fname);
+void sort_town(const char* fname, char);
+
+
+int main()
+{
+	account ac{};
+	char ch, otv, t;
+	char fname_b[25] = FNAME_B;
+	char fname_t[25] = FNAME_T;
+	char fname_d[20] = FNAME_D;
+	setlocale(LC_ALL, "Russian");
+	intro();
+	do
+	{
+		system("cls");
+		cout << "\n\n\n\t Главное меню";
+		cout << "\n\n\t 01. СОЗДАТЬ БАЗУ ДАННЫХ МФО";									//+++
+		cout << "\n\n\t 02. СОЗДАТЬ АНКЕТУ ЗАЁМЩИКА";									//+++
+		cout << "\n\n\t 03. СОРТИРОВКА ПО СРЕДНЕМУ ЕЖЕМЕСЯЧНОМУ ДОХОДУ ЗАЁМЩИКА";		//+++
+		cout << "\n\n\t 04. СОРТИРОВКА ПО МЕСТОПОЛОЖЕНИЮ ЗАЁМЩИКА";						//---
+		cout << "\n\n\t 05. РАСЧЕТНЫЕ БАНКОВСКИЕ ОПЕРАЦИИ";								//+++
+		cout << "\n\n\t 06. РЕДАКТИРОВАТЬ БАЗУ ДАННЫХ ЗАЁМЩИКОВ";						//+++
+		cout << "\n\n\t 07. ВЫХОД";														//+++
+		cout << "\n\n\t Введите номер варианта (1-7) ";
+		cin >> ch;
+		system("cls");
+		switch (ch)
+		{
+		case '1':
+			if (proverka_file(fname_b)) {
+				cout << " Файл базы данных МФО с именем " << fname_b;
+				cout << " был создан ранее." << endl;
+				cout << " Создать файл с новым именем? [Y/N] ";
+				while ((otv = getc(stdin)) == '\n');
+				if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+					cout << " Введи название базы данных МФО на латин. (необходимо также указать разширение .dat): ";
+					cin >> fname_b;
+				}
+				else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т')
+				{
+					cout << "\n База не создана." << endl;
+					cout << "\n Для возврата в главное меню, пожалуйста, нажмите <Enter>.";
+					int main();
+					break;
+				}
+				else {
+					cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+					int main();
+					break;
+				}
+			}
+			else if (!proverka_file(fname_b)) {
+				cout << "\n Ошибка открытия файла для чтения и записи!Press any Key..." << endl;
+				break;
+			}
+			cout << " Создаем базу " << fname_b << endl;
+			cout << " База данных МФО готова к работе." << endl;
+			cout << " Вы хотите произвести запись в созданную базу? [Y/N]: ";
+			while ((otv = getc(stdin)) == '\n');
+			if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+				write_account(fname_b);
+				break;
+			}
+			else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т') {
+				cout << "\n Для возврата в главное меню, пожалуйста, нажмите <Enter>.";
+				int main();
+				break;
+			}
+			else {
+				cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+				int main();
+				break;
+			}
+			cout << "\n Создание файла закончено." << endl;
+			break;
+		case '2':
+			if (proverka_file(fname_b)) {
+				cout << " Файл базы данных МФО с именем " << fname_b;
+				cout << " был создан ранее.";
+				cout << "\n Продолжить заполнение заполнее в данном файле? [Y/N]: ";
+				while ((otv = getc(stdin)) == '\n');
+				if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+					write_account(fname_b);
+					break;
+				}
+				else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т') {
+					cout << " Задайте имя ранее создаваемого файла (необходимо также указать разширение .dat): ";
+					cin >> fname_b;
+					if (!proverka_file(fname_b)) {
+						cout << " Такая база данных не создавалась." << endl;
+						cout << " \nСоздаём новый файл базы данных." << endl;
+						cout << " Введи название базы данных МФО на латин. (необходимо также указать разширение .dat): ";
+						cin >> fname_b;
+						cout << " Хотите продолжить заполнение базы данных? [Y/N]: ";
+						while ((otv = getc(stdin)) == '\n');
+						if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+							write_account(fname_b);
+							break;
+						}
+						else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т')
+						{
+							cout << "\n Для возврата в главное меню, пожалуйста, нажмите <Enter>.";
+							int main();
+							break;
+						}
+						else {
+							cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+							int main();
+							break;
+						}
+					}
+				}
+				else {
+					cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+					int main();
+					break;
+				}
+				cout << " Добавляем записи в файл " << fname_b << endl;
+				cout << "\n Файл базы данных успешно обновлен.";
+			}
+			else if (!proverka_file(fname_b)) {
+				cout << "\n Ошибка открытия файла для чтения и записи! Press any Key..." << endl;
+				break;
+			} 
+			break;
+
+		case '3':
+			sort_income(fname_b);
+			ac.report2(fname_b);
+			break;
+		case '4':
+			cout << "Введите город, по которому хотите осуществить поиск ЗАЁМЩИКОВ: ";
+			cin >> t ;
+			//sort_town(fname_b, t);
+			break;
+
+		case '5':
+			operations_rko(fname_b);
+			break;
+		case '6':
+			settings_bd(fname_b);
+			break;
+
+
+		case '7':
+			cout << "\n\n\tБлагодарим Вас за использование нашего ПО. \n\n\t\t\tДо новых встреч!";
+			break;
+		default:cout << "\a";
+		}
+		cin.ignore();
+		cin.get();
+	} while (ch != '7');
+	return 0;
+}
+
+void intro()
+{
+	cout << "\n\n\n\t            DATABASE";
+	cout << "\n\n\t          РУКИ В РУКИ";
+	cout << "\n\n\t    Система управления МФО";
+	cout << "\n\n\n\nВыполнил: студент уч. группы Z1411";
+	cout << "\n\nВоробьев Н.А.";
+	cin.get();
+}
+
+//***************************************************************
+//			функция для записи записи в двоичный файл
+//****************************************************************
+
+void write_account(const char* fname_b)
+{
+	account ac{};
+	ofstream outFile;
+	outFile.open(fname_b, ios::binary | ios::app);
+	ac.create_account();
+	outFile.write(reinterpret_cast<char*> (&ac), sizeof(account));
+	outFile.close();
+}
+
+//*******************************************************************************************
+//    		функция для сортировки по возрастанию СРЕДНЕГО ЕЖЕМЕСЯЧНОГО ДОХОДА 
+//*******************************************************************************************
+
+void sort_income(const char* fname) 
+{
+	int i;
+	int fl;
+	account ppp, ship;
+	FILE* baza;
+	baza = fopen(fname, PR_S); //открываем файл на чтение и запись
+	do {
+		rewind(baza);
+		fl = 0;
+		for (i = 0; fread(&ship, sizeof(ship), 1, baza) > 0; i += sizeof(ship), fseek(baza, i, SEEK_SET)) {
+			if (fread(&ppp, sizeof(ship), 1, baza) > 0) {
+				if (ship.retincome() > ppp.retincome()) {
+					fseek(baza, i, SEEK_SET); //позиция i от НАЧАЛА файла
+					fwrite(&ppp, sizeof(ship), 1, baza);
+					fwrite(&ship, sizeof(ship), 1, baza);
+					fl = 1;
+				}
+			}
+		}
+	} while (fl);
+	fclose(baza);
+	return;
+
+}
+
+
+
+
+//***************************************************************
+//			функция для НАСТРОЙКИ БАЗЫ ДАННЫХ
+//****************************************************************
+
+void settings_bd(const char* fname)
+{
+	char ch;
+	int num;
+	char otv;
+	char fname_b[25] = FNAME_B;
+	char fname_d[20] = FNAME_D;
+	do {
+		system("cls");
+		cout << "\n\n\n\t РЕДАКТИРОВАНИЕ БАЗЫ ДАННЫХ ЗАЁМЩИКОВ";
+		cout << "\n\n\t 01. ВЫВЕСТИ СПИСОК ВСЕХ ЗАЁМЩИКОВ.";
+		cout << "\n\n\t 02. ДОБАВИТЬ УЧЁТНУЮ ЗАПИСЬ ЗАЁМЩИКА.";
+		cout << "\n\n\t 03. ИЗМЕНИТЬ УЧЁТНУЮ ЗАПИСЬ ЗАЁМЩИКА.";
+		cout << "\n\n\t 04. УДАЛИТЬ УЧЁТНУЮ ЗАПИСЬ ЗАЁМЩИКА.";
+		cout << "\n\n\t 05. ВЕРНУТЬСЯ В МЕНЮ." << endl;
+		cout << "\n\t Введите номер варианта (1-5): ";
+		cin >> ch;
+		system("cls");
+		switch (ch)
+		{
+		case '1':
+			display_all(fname);
+			break;
+		case '2':
+			if (proverka_file(fname_b)) {
+				cout << " Файл базы данных МФО с именем " << fname_b;
+				cout << " был создан ранее.";
+				cout << "\n Продолжить заполнение заполнее в данном файле? [Y/N]: ";
+
+				while ((otv = getc(stdin)) == '\n');
+				if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+					write_account(fname_b);
+					break;
+				}
+				else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т') {
+					cout << " Задайте имя ранее создаваемого файла (необходимо также указать разширение .dat): ";
+					cin >> fname_b;
+					if (!proverka_file(fname_b)) {
+						cout << " Такая база данных не создавалась." << endl;
+						cout << " \nСоздаём новый файл базы данных." << endl;
+						cout << " Введи название базы данных МФО на латин. (необходимо также указать разширение .dat): ";
+						cin >> fname_b;
+						cout << " Хотите продолжить заполнение базы данных? [Y/N]: ";
+
+						while ((otv = getc(stdin)) == '\n');
+						if (otv == 'Y' || otv == 'y' || otv == 'Н' || otv == 'н') {
+							write_account(fname_b);
+							break;
+						}
+						else if (otv == 'N' || otv == 'n' || otv == 'Т' || otv == 'т')
+						{
+							cout << "\n Для возврата в главное меню, пожалуйста, нажмите <Enter>.";
+							int main();
+							break;
+						}
+						else {
+							cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+							int main();
+							break;
+						}
+					}
+				}
+				else {
+					cout << "\n Мы не смогли распознать Ваш ответ. Возращаем Вас в Главное меню." << endl;
+					int main();
+					break;
+				}
+			}
+			cout << " Добавляем записи в файл " << fname_b << endl;
+			write_account(fname_b);
+			cout << "\n Файл базы данных успешно обновлен.";
+			break;
+		case '3':
+			cout << "\n\n\tВведите id договора : "; cin >> num;
+			modify_account(fname_b, num);
+			break;
+		case '4':
+			cout << "\n\n\tВведите id договора : "; cin >> num;
+			delete_account(fname_b, fname_d, num);
+			break;
+		case '5':
+			cout << "\n\n\t Для продолжения, пожалуйста, нажмите <Enter>" << endl;
+			break;
+		}
+		cin.ignore();
+		cin.get();
+	} while (ch != '5');
+	return;
+}
+
+//***************************************************************
+//    		функция удаления записанного файла 
+//****************************************************************
+
+void delete_account(const char* fname1, const char* fname2, int n)
+{
+	account ac {};
+	ifstream inFile;
+	ofstream outFile;
+	inFile.open(fname1, ios::binary);
+	if (!inFile)
+	{
+		cout << "\n\t Ошибка открытия файла для чтения и записи! Press any Key...";
+		return;
+	}
+	outFile.open(fname2, ios::binary);
+	inFile.seekg(0, ios::beg);
+	while (inFile.read(reinterpret_cast<char*> (&ac), sizeof(account)))
+	{
+		if (ac.retidDogovora() != n)
+		{
+			outFile.write(reinterpret_cast<char*> (&ac), sizeof(account));
+		}
+	}
+	inFile.close();
+	outFile.close();
+	remove(fname1);
+	rename(fname2, fname1);
+	cout << "\n\n\t УЧЁТНАЯ ЗАПИСЬ УДАЛЕНА.";
+}
+
+//***************************************************************
+//    		функция для изменения записи файла
+//****************************************************************
+
+void modify_account(const char* fname, int n)
+{
+	bool found = false;
+	account ac;
+	fstream File;
+	File.open(fname, ios::binary | ios::in | ios::out);
+	if (!File)
+	{
+		cout << " Ошибка открытия файла для записи! Press any Key...";
+		return;
+	}
+	while (!File.eof() && found == false)
+	{
+		File.read(reinterpret_cast<char*> (&ac), sizeof(account));
+		if (ac.retidDogovora() == n)
+		{
+			ac.show_account();
+			cout << "\n\n Введите актуальные данные учётной записи" << endl;
+			ac.modify();
+			int pos = (-1) * static_cast<int>(sizeof(account));
+			File.seekp(pos, ios::cur);
+			File.write(reinterpret_cast<char*> (&ac), sizeof(account));
+			cout << "\n\n\t Учетная запись обновлена.";
+			found = true;
+		}
+	}
+	File.close();
+	if (found == false)
+		cout << "\n\n Учетная запись не найдена. ";
+}
+
+//***************************************************************
+//    		функция для отображения всех реквизитов счета
+//****************************************************************
+
+void display_all(const char* fname)
+{
+	int i;
+	account ac {};
+	ifstream inFile;
+	inFile.open(fname, ios::binary);
+	if (!inFile)
+	{
+		cout << " Ошибка открытия файла для записи! Press any Key...";
+		return;
+	}
+	cout << "\n\n\t\t БАЗА ДАННЫХ ЗАЁМЩИКОВ \n\n";
+	ac.zag1();
+	while (inFile.read(reinterpret_cast<char*> (&ac), sizeof(account)))
+	{
+		ac.report1();
+	}
+	cout << endl << "\t";
+	for (i = 1; i <= 133; i++) {
+		cout << "-";
+	}
+	inFile.close();
+}
+
+void operations_rko(const char* fname_b)
+{
+	int num;
+	char ch;
+	do {
+		system("cls");
+		cout << "\n\n\n\t РАСЧЕТНЫЕ БАНКОВСКИЕ ОПЕРАЦИИ ";
+		cout << "\n\n\t 01. ПОПОЛНИТЬ ЛИЦЕВОЙ СЧЁТ.";
+		cout << "\n\n\t 02. СНЯТЬ С ЛИЦЕВОГО СЧЁТА.";
+		cout << "\n\n\t 03. ВЫВЕСТИ БАЛАНС НА ЭКРАН.";
+		cout << "\n\n\t 04. ВЕРНУТЬСЯ В ГЛАВНОЕ МЕНЮ." << endl;
+		cout << "\n\n\t Введите номер варианта (1-4): ";
+		cin >> ch;
+		system("cls");
+		switch (ch)
+		{
+		case '1':
+			cout << "\n\t Введите ID вашего договоора: ";
+			cin >> num;
+			deposit_withdraw(fname_b, num, 1);
+			break;
+		case '2':
+			cout << "\n\t Введите ID вашего договоора: ";
+			cin >> num;
+			deposit_withdraw(fname_b, num, 2);
+			break;
+		case '3':
+			cout << "\n\t Введите ID вашего договоора: ";
+			cin >> num;
+			display_sp(fname_b, num);
+			break;
+		case '4':
+			cout << "\n\n\t Для продолжения, пожалуйста, нажмите <Enter>" << endl;
+			break;
+		}
+		cin.ignore();
+		cin.get();
+	} while (ch != '4');
+	return;
+}
+
+//***************************************************************
+//    	функция пополнения / списания денежных средств с лицевого счета
+//****************************************************************
+
+void deposit_withdraw(const char* fname, int n, int option)
+{
+	int amt;
+	bool found = false;
+	account ac {};
+	fstream File;
+	File.open(fname, ios::binary | ios::in | ios::out);
+	if (!File)
+	{
+		cout << "\n\t Ошибка открытия файла для чтения и записи! Press any Key...";
+		return;
+	}
+	while (!File.eof() && found == false)
+	{
+		File.read(reinterpret_cast<char*> (&ac), sizeof(account));
+		if (ac.retidDogovora() == n)
+		{
+			ac.show_account();
+			if (option == 1)
+			{
+				cout << "\n\n\t\t ПОПОЛНЕНИЕ ЛИЦЕВОГО СЧЁТА ЗАЁМЩИКА ";
+				cout << "\n\n\t Введите сумму, на которую хотите произвести пополнение: ";
+				cin >> amt;
+				ac.dep(amt);
+			}
+			if (option == 2)
+			{
+				cout << "\n\n\t\t ВЫВОД СРЕДСТВ С ЛИЦЕВОГО СЧЁТА ЗАЁМЩИКА ";
+				cout << "\n\n\t Введите сумму, на которую хотите произвести вывод средств:";
+				cin >> amt;
+				double bal = ac.retdeposit() - amt;
+				if ((bal < 5 && ac.rettype() == 'B') || (bal < 25 && ac.rettype() == 'A'))
+					cout << "\n\t Для данной операции недостаточно денежных средств.\n Пожалуйста, убедитеть в корректности запроса и попробуйте еще раз!";
+				else
+					ac.draw(amt);
+			}
+			int pos = (-1) * static_cast<int>(sizeof(ac));
+			File.seekp(pos, ios::cur);
+			File.write(reinterpret_cast<char*> (&ac), sizeof(account));
+			cout << "\n\t\t УЧЁТНАЯ ЗАПИСЬ ЗАЁМЩИКА ОБНОВЛЕНА.";
+			cout << "\n\n\t Для продолжения - нажмите <Enter>.";
+			found = true;
+		}
+	}
+	File.close();
+	if (found == false)
+		cout << "\n\t Ошибка чтения файла. Приносим свои извинения! ";
+}
+
+//*******************************************************************************************
+//    	функция для отображения реквизитов учетной записи, предоставленных пользователем
+//*******************************************************************************************
+
+void display_sp(const char* fname_b, int n)
+{
+	account ac {};
+	bool flag = false;
+	ifstream inFile;
+	inFile.open(fname_b, ios::binary);
+	if (!inFile)
+	{
+		cout << "\n\t Ошибка открытия файла для записи! Press any Key...";
+		return;
+	}
+	cout << "\n\t СВЕДЕНИЯ О БАЛАНСЕ ЗАЁМЩИКОВ\n";
+
+	while (inFile.read(reinterpret_cast<char*> (&ac), sizeof(account)))
+	{
+		if (ac.retidDogovora() == n)
+		{
+			ac.show_account();
+			flag = true;
+			cout << "\n\t Для продолжения - нажмите <Enter>."; 
+		}
+	}
+	inFile.close();
+	if (flag == false)
+		cout << "\n\t Данный id договора - не существует.";
+}
+
+// функция проверки наличия физического файла
+int proverka_file(const char* fname) {
+	fstream File;
+	File.open(fname, ios::binary | ios::in | ios::out);
+	if (!File)
+	{
+		cout << "\n\t Ошибка открытия файла для чтения и записи! Press any Key...";
+		return 0;
+	}
+	return 1;
+}

@@ -1,0 +1,6 @@
+﻿  Source1.cpp
+C:\Users\Owner\source\repos\game_over\game_over\Source1.cpp(62,47): error C2065: M_PI: необъявленный идентификатор
+C:\Users\Owner\source\repos\game_over\game_over\Source1.cpp(68,52): error C2065: M_PI: необъявленный идентификатор
+C:\Users\Owner\source\repos\game_over\game_over\Source1.cpp(68,64): error C2065: M_PI: необъявленный идентификатор
+C:\Users\Owner\source\repos\game_over\game_over\Source1.cpp(74,51): error C2065: M_PI: необъявленный идентификатор
+C:\Users\Owner\source\repos\game_over\game_over\Source1.cpp(81,56): error C2065: M_PI: необъявленный идентификатор

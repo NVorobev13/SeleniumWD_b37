@@ -1,3 +1,0 @@
-﻿  chernovik_title.cpp
-C:\Users\Owner\source\repos\chernovik_title\chernovik_title.cpp(533,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  chernovik_title.vcxproj -> C:\Users\Owner\source\repos\chernovik_title\x64\Debug\chernovik_title.exe

@@ -25,7 +25,6 @@ namespace OpenBrowser
             IWebElement element = wait.Until(d => d.FindElement(By.Name("q")));
             driver.FindElement(By.Name("q")).SendKeys("Selenium WebDriver");
             driver.FindElement(By.Name("btnI")).Click();
-            //driver.FindElement(By.Name("WebDriver - Selenium")).Click();
         }
 
         [TearDown]

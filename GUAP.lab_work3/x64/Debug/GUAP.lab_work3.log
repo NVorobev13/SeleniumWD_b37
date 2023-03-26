@@ -1,8 +1,0 @@
-﻿  lab_work3.cpp
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(48,53): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(55,28): warning C4244: return: преобразование "double" в "float", возможна потеря данных
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(66,53): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(74,28): warning C4244: return: преобразование "double" в "float", возможна потеря данных
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(85,53): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Owner\source\repos\GUAP.lab_work3\lab_work3.cpp(91,28): warning C4244: return: преобразование "double" в "float", возможна потеря данных
-  GUAP.lab_work3.vcxproj -> C:\Users\Owner\source\repos\GUAP.lab_work3\x64\Debug\GUAP.lab_work3.exe

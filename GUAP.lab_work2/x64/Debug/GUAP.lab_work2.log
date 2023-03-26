@@ -1,6 +1,0 @@
-﻿  lab_work2.cpp
-C:\Users\Owner\source\repos\GUAP.lab_work2\lab_work2.cpp(37,34): error C2065: M_PI: необъявленный идентификатор
-C:\Users\Owner\source\repos\GUAP.lab_work2\lab_work2.cpp(40,39): error C2065: M_PI: необъявленный идентификатор
-C:\Users\Owner\source\repos\GUAP.lab_work2\lab_work2.cpp(40,51): error C2065: M_PI: необъявленный идентификатор
-C:\Users\Owner\source\repos\GUAP.lab_work2\lab_work2.cpp(43,38): error C2065: M_PI: необъявленный идентификатор
-C:\Users\Owner\source\repos\GUAP.lab_work2\lab_work2.cpp(46,43): error C2065: M_PI: необъявленный идентификатор

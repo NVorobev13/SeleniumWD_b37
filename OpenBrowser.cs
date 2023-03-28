@@ -5,10 +5,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWD_course
 {
-    [TestFixture]
-    public class OpenBrowser
+    internal class OpenBrowser
     {
-
         private IWebDriver driver;
         private WebDriverWait wait;
 

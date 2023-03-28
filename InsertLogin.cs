@@ -5,10 +5,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWD_course
 {
-    [TestFixture]
-    public class InsertLogin
+    internal class InsertLogin
     {
-
         private IWebDriver driver;
         private WebDriverWait wait;
 

@@ -21,7 +21,6 @@ namespace SeleniumWD_course
         {
             int DuckAdd = 0;
             driver.Url = "http://localhost/litecart/";
-            Thread.Sleep(1000);
 
             //создаем цикл добавления товара в корзину
             for (int i = 0; i < 5; i++)
@@ -38,7 +37,6 @@ namespace SeleniumWD_course
                 }
                 catch (NoSuchElementException) { }
                 
-                Thread.Sleep(1000);
                 driver.FindElement(By.XPath(".//button[@name='add_cart_product']")).Click();
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(driver.FindElement(By.XPath(".//span[@class='quantity']")), DuckQuantity));
 
@@ -69,9 +67,7 @@ namespace SeleniumWD_course
 
             //ожидаем внесенных изменений 
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(".//em")));
-            Thread.Sleep(1000);
             driver.Url = "http://localhost/litecart/";
-            Thread.Sleep(1000);
 
             Console.WriteLine("В корзине произошли следующие изменения: ");
             Console.WriteLine("Товаров добавленно - " + DuckAdd + " шт.");
